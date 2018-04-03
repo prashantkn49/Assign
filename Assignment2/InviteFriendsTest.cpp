@@ -15,11 +15,11 @@ void InviteFriendsTest::testInviteFriends(void)
         cout << "Cannot read the file\n\n";
     }
 
-    vector < pair < int, string > > friendsComingToParty = inviteFriends.getIdsWithName();
+    vector < friendInfo > friendsComingToParty = inviteFriends.getFriendInfo();
 
     for ( int i = 0; i < friendsComingToParty.size(); ++i )
     {
-        cout << friendsComingToParty[i].second << "\n\n";
+        CPPUNIT_ASSERT(friendsComingToParty[i].distance <= 100.0);
     }
 
     fileName = "friends2.json";
@@ -34,11 +34,11 @@ void InviteFriendsTest::testInviteFriends(void)
 
 	CPPUNIT_ASSERT(failed == false);
 
-	friendsComingToParty = inviteFriends.getIdsWithName();
+	friendsComingToParty = inviteFriends.getFriendInfo();
 
     for ( int i = 0; i < friendsComingToParty.size(); ++i )
     {
-        cout << friendsComingToParty[i].second << "\n\n";
+        CPPUNIT_ASSERT(friendsComingToParty[i].distance <= 100.0);
     }
 
     fileName = "friends3.json";
@@ -53,11 +53,11 @@ void InviteFriendsTest::testInviteFriends(void)
 
     CPPUNIT_ASSERT(failed == false);
 
-    friendsComingToParty = inviteFriends.getIdsWithName();
+    friendsComingToParty = inviteFriends.getFriendInfo();
 
     for ( int i = 0; i < friendsComingToParty.size(); ++i )
     {
-        cout << friendsComingToParty[i].second << "\n\n";
+        CPPUNIT_ASSERT(friendsComingToParty[i].distance <= 100.0);
     }
 
     failed = false;
