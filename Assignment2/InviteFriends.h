@@ -31,7 +31,7 @@ public:
 
     bool readFile(const std::string& fileName);
 
-    std::vector < friendInfo > getIdsWithName();
+    std::vector < friendInfo > getFriendInfo();
 
 private:
 	Json::Value jsonArray;

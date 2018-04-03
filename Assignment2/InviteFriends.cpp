@@ -31,7 +31,7 @@ bool InviteFriends::readFile(const string& fileName)
     return true;
 }
 
-vector < friendInfo > InviteFriends::getIdsWithName(void)
+vector < friendInfo > InviteFriends::getFriendInfo(void)
 {
     vector < friendInfo > friendsComingToParty;
 
