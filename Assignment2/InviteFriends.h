@@ -11,6 +11,14 @@
 const double PI = atan(1) * 4;
 const double EARTH_RADIUS = 6371;
 
+typedef struct
+{
+    int user_id;
+    std::string name;
+    double distance;
+
+} friendInfo;
+
 class InviteFriends
 {
 public:
@@ -23,7 +31,7 @@ public:
 
     bool readFile(const std::string& fileName);
 
-    std::vector < std::pair < int, std::string > > getIdsWithName();
+    std::vector < friendInfo > getIdsWithName();
 
 private:
 	Json::Value jsonArray;

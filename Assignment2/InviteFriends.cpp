@@ -31,9 +31,9 @@ bool InviteFriends::readFile(const string& fileName)
     return true;
 }
 
-vector < pair < int, string > > InviteFriends::getIdsWithName(void)
+vector < friendInfo > InviteFriends::getIdsWithName(void)
 {
-    vector < pair < int, string> > friendsComingToParty;
+    vector < friendInfo > friendsComingToParty;
 
     for( int i = 0; i < jsonArray.size(); ++i )
     {
@@ -45,13 +45,17 @@ vector < pair < int, string > > InviteFriends::getIdsWithName(void)
 
             targetLongitude = stod(jsonArray[i]["longitude"].asString());
 
-            if ( getDistance(targetLatitude, targetLongitude) <= 100.0 )
+            double distance = getDistance(targetLatitude, targetLongitude);
+
+            if (  distance <= 100.0 )
             {
                 int user_id  = jsonArray[i]["user_id"].asInt();
 
                 string name = jsonArray[i]["name"].asString();
 
-                friendsComingToParty.push_back( make_pair(user_id, name) );
+                friendInfo tmp = { .user_id = user_id, .name = name, .distance = distance };
+
+                friendsComingToParty.push_back( tmp );
             }
         }
 
@@ -61,7 +65,11 @@ vector < pair < int, string > > InviteFriends::getIdsWithName(void)
         }
     }
 
-    sort(friendsComingToParty.begin(), friendsComingToParty.end());
+    sort(friendsComingToParty.begin(), friendsComingToParty.end(), [](friendInfo& a, friendInfo& b){
+
+        return a.user_id < b.user_id;
+
+    });
 
     return friendsComingToParty;
 }
