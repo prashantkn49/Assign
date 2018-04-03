@@ -17,7 +17,7 @@ public:
     	thirdElement  = 0;
     }
 
-    TripletSum(vector<int>& data, int targetSUm)
+    TripletSum(vector<int>& data, int targetSum)
     {
     	this -> data      = data;
     	this -> targetSum = targetSum;
