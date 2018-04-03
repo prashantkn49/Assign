@@ -63,10 +63,9 @@ void TripletSumTest::testTripletSum(void)
     CPPUNIT_ASSERT(tripletSum.checkTargetSum() == true);
 
     targetSum = 2;
-    tripletSum.setData(data);
     tripletSum.setTargetSum(targetSum);
 
-    // Data = {1, 1, 1, 2, -97, -98, 0} and targetSum = 2
+    // Data = {1, 1, 1, 2, -97, -98} and targetSum = 2
     CPPUNIT_ASSERT(tripletSum.checkTargetSum() == false);
 
 }
