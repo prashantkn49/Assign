@@ -20,11 +20,11 @@ bool TripletSum::checkTargetSum()
     {
         int leftIndex = fixedIndex + 1, rightIndex = data.size() - 1;
 
-        // Sum might overflow, so use long long
-        long long int currentSum = data[fixedIndex] + data[leftIndex] + data[rightIndex];
-
         while ( leftIndex < rightIndex )
         {
+            // Sum might overflow, so use long long
+            long long int currentSum = data[fixedIndex] + data[leftIndex] + data[rightIndex];
+
             // If currentSum is equal to targetSum store the values and retur true
             if ( currentSum == targetSum )
             {
